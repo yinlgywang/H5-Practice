@@ -12,9 +12,26 @@ body{
 }
 nav{
   background-color: #dceeab;
-  text-align: center;
-  color:#144e71
+  color:#144e71;
   padding: 5px;
+  display: inline-block; 
+  width: 80%;
+  text-align: right;
+}
+nav ul {
+  display: inline-block;  /* 【关键】允许它和别人在同一行 */
+  width: 85%;             /* 给链接分配 85% 的宽度 */
+  text-align: left;       /* 让链接靠左显示 */
+  margin: 0;              /* 去除默认的外边距 */
+  padding: 0;             /* 去除默认的内边距 */
+  vertical-align: middle; /* 和右边的图片垂直居中对齐 */
+}
+
+/* 3. 图片的设置 */
+nav img {
+  width: 10%;             /* 给图片分配 10% 的宽度 (85% + 10% = 95%，留一点缝隙刚刚好) */
+  display: inline-block;  /* 【关键】允许它和 ul 在同一行 */
+  vertical-align: middle; /* 和左边的链接垂直居中对齐 */
 }
 li{
   color: #144e71;
@@ -25,10 +42,11 @@ li{
   background: rgba(205, 217, 242, 0.838);
   text-align: center;
   align-content: center;
+  vertical-align: middle;
 }
 a{
   color: #144e71;
-  text-decoration: underline;
+  text-decoration: none;
 }
 main{
   background-color: #dceeab;
@@ -37,7 +55,6 @@ main{
   padding: 5px;
 }
 footer{
-  background-color: ;
   color: rgb(0, 8, 8);
   font-size: 60%;
   text-align: center;
@@ -53,7 +70,18 @@ h1{
     margin-inline-end: 0px;
     font-weight: bold;
     unicode-bidi: isolate;
+}
 p{
   color: #144e71;
   text-align: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: center; /* 让网格整体在页面居中 */
+  row-gap: 30px;    /* 上下图片之间的缝隙为 30px */
+  column-gap: 15px;           /* 在两列和多行之间加上 20px 的空隙 */
+}
+.grid img {
+  width: 100%; /* 图片填满网格列 */
 }
