@@ -1,0 +1,228 @@
+/* CSS Reset & Basic Setup */
+* {
+    box-sizing: border-box; /* Crucial for Box Model calculations */
+}
+
+body {
+    font-family: "Georgia", "Times New Roman", serif; /* Classical English font stack */
+    background-color: #f5f4ef; /* Light parchment/cream background */
+    color: #2c2c2c;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect width="100" height="100" fill="%23f5f4ef"/><path d="M0 0h100v100H0z" fill="none"/><circle cx="50" cy="50" r="2" fill="%23000"/></svg>');
+}
+
+/* =========================================================================
+   Accessibility Requirement: "Skip to Main Content"
+   Must be hidden normally, but visible on keyboard focus (Tab key)
+   ========================================================================= */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background-color: #8a2e2e;
+    color: #ffffff;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 9999;
+    transition: top 0.3s ease;
+    border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+    top: 0; /* Drops down into view when focused */
+    outline: 3px solid #1a1a1a;
+}
+
+/* =========================================================================
+   Header & Navigation
+   Requirement: Accessible, attractively styled navigation using Flexbox
+   ========================================================================= */
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    border-bottom: 1px solid #dcd3b6; /* Box Model: Border */
+    margin-bottom: 40px;              /* Box Model: Margin */
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: normal;
+    letter-spacing: 5px;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #8a2e2e; /* Deep dark red for contrast */
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* Using Flexbox for Navigation Layout */
+nav ul {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+    gap: 30px;       /* Spacing between links */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #4a4a4a;
+    font-size: 1.2em;
+    position: relative;
+    padding: 5px 10px; /* Box Model: Padding increases clickable area (Accessibility) */
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Focus and hover states for accessibility */
+nav a:hover, 
+nav a:focus, 
+nav a.active {
+    color: #8a2e2e;
+    background-color: rgba(138, 46, 46, 0.05); /* Subtle background on hover */
+    outline: none;
+}
+
+/* Keyboard focus indicator */
+nav a:focus-visible {
+    outline: 2px dashed #8a2e2e;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: #8a2e2e;
+}
+
+/* =========================================================================
+   Main Layout & Box Model
+   ========================================================================= */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px; /* Box Model */
+}
+
+main h2 {
+    text-align: center;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* =========================================================================
+   Cover Page (Flexbox Layout)
+   ========================================================================= */
+.cover-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    text-align: center;
+    gap: 40px;
+}
+
+.cover-title {
+    font-size: 3em;
+    letter-spacing: 5px;
+    color: #1a1a1a;
+    border-top: 2px solid #8a2e2e;    /* Box Model */
+    border-bottom: 2px solid #8a2e2e; /* Box Model */
+    padding: 30px 0;                  /* Box Model */
+}
+
+.enter-btn {
+    display: inline-block;
+    padding: 12px 35px; /* Large clickable area */
+    border: 2px solid #8a2e2e;
+    color: #8a2e2e;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    background: transparent;
+    border-radius: 4px;
+}
+
+.enter-btn:hover, .enter-btn:focus {
+    background-color: #8a2e2e;
+    color: #f5f4ef;
+    outline: none;
+}
+
+.enter-btn:focus-visible {
+    outline: 3px solid #1a1a1a;
+    outline-offset: 4px;
+}
+
+/* =========================================================================
+   Photo Gallery (Grid & Flex Layouts combined)
+   Requirement: Effectively use the grid and flex property values
+   ========================================================================= */
+.gallery-grid {
+    display: grid;
+    /* Responsive Grid: creates as many 300px columns as will fit */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* Spacing between grid items */
+    justify-content: center;
+}
+
+/* Box Model: Padding, Border, Margin, Box-Shadow used beautifully */
+.gallery-item {
+    background: #ffffff;
+    padding: 15px;         /* Box Model: Inner padding creates a polaroid frame effect */
+    margin: 0;             /* Reset default figure margin */
+    border: 1px solid #e8e3d3; /* Box Model: Border */
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.03); /* Soft shadow */
+    display: flex;         /* Using Flexbox inside the grid item to align content */
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 2px 8px 20px rgba(0,0,0,0.08);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border: 1px solid #f0f0f0;
+}
+
+.gallery-caption {
+    margin-top: 15px;      /* Box Model: Space between image and text */
+    font-size: 1.1em;
+    color: #555;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    border-top: 1px solid #dcd3b6;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
